@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml && mv ./target/Boris-V1.war /
+      run: mvn -B package --file pom.xml && cd ./target/
     - name: copy file via ssh password
       uses: appleboy/scp-action@master
       with:
