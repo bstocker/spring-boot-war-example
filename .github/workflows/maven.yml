@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml && cd ./target/
+      run: mvn -B package --file pom.xml && ls ./target/
     - name: copy file via ssh password
       uses: appleboy/scp-action@master
       with:
@@ -36,6 +36,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         port: ${{ secrets.DEPLOY_PORT }}
-        source: "Boris-V1.war"
+        source: "./target/Boris-V1.war"
         target: "/opt/tomcat/webapps"
       
